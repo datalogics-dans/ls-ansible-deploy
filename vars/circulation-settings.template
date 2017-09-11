@@ -44,3 +44,7 @@ rds_subnet: "simplye"
 psql_db_name: "circulation"
 psql_username: "simplified"
 psql_password: (REQUIRED)
+
+# Route 53
+route_domain: (REQUIRED) # e.g. simplye-md.org
+route_name: (REQUIRED) # e.g. frederick (will be concatenated onto the domain)

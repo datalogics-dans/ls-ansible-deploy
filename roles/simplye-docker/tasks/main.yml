@@ -13,6 +13,17 @@
     mode: 0775
   become: yes
 
+- name: Assign Route 53 subdomain to this instance
+  route53:
+    region: "{{ aws_region }}"
+    state: present
+    zone: "{{ route_domain }}"
+    record: "{{ route_name }}.{{ route_domain }}"
+    type: A
+    ttl: 300
+    value: "{{ hostvars['localhost'].ec2_ip }}"
+    wait: yes
+
 - local_action:
     module: ec2
     region: "{{ aws_region }}"
